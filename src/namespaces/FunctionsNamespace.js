@@ -1,5 +1,7 @@
 import RadiantNamespace from '../RadiantNamespace';
 
+import LanguageNamespace from './LanguageNamespace';
+
 export default class FunctionsNamespace extends RadiantNamespace {
 
     constructor(...args) {
@@ -9,6 +11,8 @@ export default class FunctionsNamespace extends RadiantNamespace {
             'create', 'Replace', 'hasClass', 'has', 'Retry', 'trigger', 'getID', 'FakeClick', 'FakeMenuClick', 'Playing', 'Volume', 'IMFL', 'getYoutubeID',
             'RollDice', 'Observe', '_textContent'
         ]);
+
+        this.language = new LanguageNamespace;
     }
 
     /**
@@ -112,7 +116,7 @@ export default class FunctionsNamespace extends RadiantNamespace {
      */
     getID(s){
         const t = s.split(/[\\\/]/)[5].match(/\S[^?]*(?:\?+|$)/g)[0].slice(0, -1);
-        return (t.match("t=")) ? this.NoSongID() : t;
+        return (t.match("t=")) ? this.language.NoSongID() : t;
     }
 
     /**
